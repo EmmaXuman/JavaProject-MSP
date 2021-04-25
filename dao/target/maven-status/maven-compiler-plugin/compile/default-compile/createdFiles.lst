@@ -1,0 +1,5 @@
+com\rbcdemo\dao\config\MyBatisConfig.class
+com\rbcdemo\dao\IDaoMember.class
+com\rbcdemo\dao\mapper\MemberMapper.class
+com\rbcdemo\dao\config\MyBatisMapperScannerConfig.class
+com\rbcdemo\dao\DaoMember.class

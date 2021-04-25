@@ -1,0 +1,24 @@
+# 数据源
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3006/JavaTest?characterEncoding=UTF-8
+  ##数据库驱动
+    driver-class-name: com.mysql.jdbc.Driver
+
+  ##检查 mybatis 配置是否存在，一般命名为 mybatis-config.xml
+  mybatis:
+    check-config-location: true
+  ##配置文件位置
+    config-location: classpath:mybatis/mybatis-config.xml
+  # Mapper文件配置
+    mapper-locations: classpath:mapper/*Mapper.xml
+    #dao类和实体类的位置
+    project : src/main/java
+    #mapper文件的位置
+    resources: src/main/resources
+  ##日志级别
+  logging:
+    level:
+      com: dalaoyang.dao.UserMapper=debug
