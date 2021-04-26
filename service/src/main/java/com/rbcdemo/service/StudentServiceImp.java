@@ -1,5 +1,7 @@
 package com.rbcdemo.service;
 
+import com.google.gson.Gson;
+import com.rbcdemo.common.RedisService;
 import com.rbcdemo.dao.entity.Student;
 import com.rbcdemo.dao.mapper.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,8 @@ import java.util.List;
 public class StudentServiceImp implements StudentService {
     @Autowired
     private StudentMapper studentMapper;
+    @Autowired
+    private RedisService redisService;
 
     @Override
     public int deleteByPrimaryKey(Integer id) {
@@ -24,7 +28,17 @@ public class StudentServiceImp implements StudentService {
 
     @Override
     public Student selectByPrimaryKey(Integer id) {
-        return studentMapper.selectByPrimaryKey(id);
+        String key = "Student_" + id;
+        Student student=(Student)redisService.get(key);
+//        Student student = new Gson().fromJson((Student)rStr, Student.class);
+        if (student != null) {
+            return student;
+        } else {
+            Student curS = studentMapper.selectByPrimaryKey(id);
+            String str = new Gson().toJson(curS);
+            redisService.set(key, str);
+            return curS;
+        }
     }
 
     @Override

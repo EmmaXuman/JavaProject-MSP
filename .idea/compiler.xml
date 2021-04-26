@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Model" />
+        <module name="core" />
         <module name="dao" />
         <module name="common" />
         <module name="web" />
@@ -19,6 +20,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Model" options="-parameters" />
       <module name="common" options="-parameters" />
+      <module name="core" options="-parameters" />
       <module name="dao" options="-parameters" />
       <module name="service" options="-parameters" />
       <module name="web" options="-parameters" />

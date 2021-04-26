@@ -3,7 +3,6 @@ package com.rbcdemo.service;
 import com.rbcdemo.dao.entity.User;
 import com.rbcdemo.dao.mapper.UserMapper;
 import com.rbcdemo.model.UserAddReq;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,12 +19,12 @@ public class UserServiceImp implements UserService{
     @Transactional
     public void TransactionTest(UserAddReq req) {
 
-        User user=new User(req.Id,req.UserName, req.password);
+        User user=new User(req.Id,req.UserName, req.password,req.UserRole);
         userMapper.updateByPrimaryKey(user);
 
         int a=1/0;
 
-        User user2=new User(4,"xx","manman");
+        User user2=new User(4,"xx","manman","User");
         userMapper.insert(user2);
     }
 
@@ -53,4 +52,10 @@ public class UserServiceImp implements UserService{
     public int updateByPrimaryKey(User record) {
         return userMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public User findByUsername(User user) {
+        return  userMapper.findByUsername(user);
+    }
+
 }

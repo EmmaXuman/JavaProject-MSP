@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 public interface RedisService<K,V> {
 
-    V get(String key);
+    V get(K key);
 
     V getAndSet(K var1, V var2);
 
@@ -25,4 +25,6 @@ public interface RedisService<K,V> {
     Long decrement(K var1);
 
     Long decrement(K var1, long var2);
+
+    boolean delete(K var1);
 }

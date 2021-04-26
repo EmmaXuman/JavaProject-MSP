@@ -17,4 +17,9 @@ public class StudentController {
     public List<Student> findAllStudent(){
         return  studentService.selectAll();
     }
+
+    @GetMapping(path = "/selectByPrimaryKey")
+    public Student selectByPrimaryKey(int id){
+        return  studentService.selectByPrimaryKey(id);
+    }
 }

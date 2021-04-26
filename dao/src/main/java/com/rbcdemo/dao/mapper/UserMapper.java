@@ -46,4 +46,6 @@ public interface UserMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(User record);
+
+    User findByUsername(User user);
 }

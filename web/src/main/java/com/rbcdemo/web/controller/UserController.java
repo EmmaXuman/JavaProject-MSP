@@ -26,14 +26,14 @@ public class UserController {
 
     @PostMapping(path = "/updateUser",produces = MediaType.APPLICATION_JSON_VALUE)
     public String updateUser(@RequestBody UserAddReq req){
-        User user = new User(req.Id,req.UserName,req.password);
+        User user = new User(req.Id,req.UserName,req.password,req.UserRole);
         userService.updateByPrimaryKey(user);
         return "success!";
     }
 
     @PostMapping(path = "/addUser",produces = MediaType.APPLICATION_JSON_VALUE)
     public String addUser(@RequestBody UserAddReq req){
-        User user = new User(req.UserName,req.password);
+        User user = new User(req.UserName,req.password,req.UserRole);
         userService.insert(user);
         return "success!";
     }

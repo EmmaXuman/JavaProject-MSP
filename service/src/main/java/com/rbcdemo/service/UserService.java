@@ -2,6 +2,7 @@ package com.rbcdemo.service;
 
 import com.rbcdemo.dao.entity.Student;
 import com.rbcdemo.dao.entity.User;
+import com.rbcdemo.dao.mapper.UserMapper;
 import com.rbcdemo.model.UserAddReq;
 
 import java.util.List;
@@ -34,4 +35,6 @@ public interface UserService {
      * 主键更新
      */
     int updateByPrimaryKey(User record);
+
+    User findByUsername(User user);
 }
