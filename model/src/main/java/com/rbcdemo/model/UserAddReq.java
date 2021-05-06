@@ -3,6 +3,34 @@ package com.rbcdemo.model;
 public class UserAddReq {
     public int Id;
     public String UserName;
+    public String password;
+    public  String realname;
+    public  String phone;
+    public  int[]  roleids;
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public int[] getRoleids() {
+        return roleids;
+    }
+
+    public void setRoleids(int[] roleids) {
+        this.roleids = roleids;
+    }
 
     public int getId() {
         return Id;
@@ -28,15 +56,7 @@ public class UserAddReq {
         this.password = password;
     }
 
-    public String password;
 
-    public String UserRole;
 
-    public String getUserRole() {
-        return UserRole;
-    }
 
-    public void setUserRole(String userRole) {
-        UserRole = userRole;
-    }
 }

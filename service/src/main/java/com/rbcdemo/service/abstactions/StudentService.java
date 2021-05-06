@@ -1,4 +1,4 @@
-package com.rbcdemo.service;
+package com.rbcdemo.service.abstactions;
 
 import com.rbcdemo.dao.entity.Student;
 

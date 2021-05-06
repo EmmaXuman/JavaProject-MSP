@@ -1,5 +1,6 @@
-package com.rbcdemo.service;
+package com.rbcdemo.service.abstactions;
 
+import com.rbcdemo.dao.entity.Menu;
 import com.rbcdemo.dao.entity.Student;
 import com.rbcdemo.dao.entity.User;
 import com.rbcdemo.dao.mapper.UserMapper;
@@ -19,7 +20,7 @@ public interface UserService {
     /**
      * 新增用户记录
      */
-    int insert(User record);
+    int insert(UserAddReq record);
 
     /**
      * 主键查询
@@ -34,7 +35,9 @@ public interface UserService {
     /**
      * 主键更新
      */
-    int updateByPrimaryKey(User record);
+    int updateByPrimaryKey(UserAddReq record);
 
     User findByUsername(User user);
+
+    List<Menu> GetUserMenu(int userid);
 }

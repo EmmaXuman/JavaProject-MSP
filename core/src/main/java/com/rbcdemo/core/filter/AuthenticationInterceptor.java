@@ -8,7 +8,7 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.rbcdemo.core.annotation.PassToken;
 import com.rbcdemo.core.annotation.UserLoginToken;
 import com.rbcdemo.dao.entity.User;
-import com.rbcdemo.service.UserService;
+import com.rbcdemo.service.abstactions.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -58,7 +58,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                     throw new RuntimeException("用户不存在，请重新登录");
                 }
                 // 验证 token
-                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(user.getUserPassword())).build();
+                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(user.getPassword())).build();
                 try {
                     jwtVerifier.verify(token);
                 } catch (JWTVerificationException e) {

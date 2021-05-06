@@ -3,7 +3,8 @@ package com.rbcdemo.web.controller;
 import com.google.gson.Gson;
 import com.rbcdemo.dao.entity.User;
 import com.rbcdemo.model.UserAddReq;
-import com.rbcdemo.service.UserService;
+import com.rbcdemo.service.abstactions.UserService;
+import com.rbcdemo.viewmodel.BaseVM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,15 +27,13 @@ public class UserController {
 
     @PostMapping(path = "/updateUser",produces = MediaType.APPLICATION_JSON_VALUE)
     public String updateUser(@RequestBody UserAddReq req){
-        User user = new User(req.Id,req.UserName,req.password,req.UserRole);
-        userService.updateByPrimaryKey(user);
+        userService.updateByPrimaryKey(req);
         return "success!";
     }
 
     @PostMapping(path = "/addUser",produces = MediaType.APPLICATION_JSON_VALUE)
     public String addUser(@RequestBody UserAddReq req){
-        User user = new User(req.UserName,req.password,req.UserRole);
-        userService.insert(user);
+        userService.insert(req);
         return "success!";
     }
 
@@ -44,7 +43,6 @@ public class UserController {
         return "success!";
     }
 
-    //http://localhost:8888/getUserList
     @GetMapping("/getUserList")
     public List<User> getUserList(String username, String password){
         return userService.selectAll();
@@ -54,4 +52,5 @@ public class UserController {
     public  void  testTransaction(@RequestBody UserAddReq req){
         userService.TransactionTest(req);
     }
+
 }

@@ -1,7 +1,7 @@
 package com.rbcdemo.web.controller;
 
 import com.rbcdemo.dao.entity.Student;
-import com.rbcdemo.service.StudentService;
+import com.rbcdemo.service.abstactions.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
